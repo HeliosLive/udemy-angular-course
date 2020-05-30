@@ -10,13 +10,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { NgxSpinnerModule } from "ngx-spinner";
 
+import { IgxButtonModule } from "igniteui-angular";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    BrowserAnimationsModule, // required animations module
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       progressBar: true,
@@ -25,8 +27,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
       progressAnimation: "decreasing",
       preventDuplicates: true,
       positionClass: "toast-bottom-left"
-    }), // ToastrModule added
-    NgxSpinnerModule
+    }),
+    NgxSpinnerModule,
+    IgxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
