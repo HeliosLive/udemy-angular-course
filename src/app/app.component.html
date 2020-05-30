@@ -33,25 +33,28 @@
 </ul>
 
 <div class="row">
-  <div class="col-md-4">
-    col-1
+  <div class="col-md-3">
+    <h2 routerLink="home">go to Home</h2>
   </div>
-  <div class="col-md-4">
-    <button igxButton="flat">Kaydet</button>
-    <button>Kaydet</button>
+  <div class="col-md-3">
+    <h2 routerLink="role">go to Role</h2>
   </div>
-  <div class="col-md-4">
-    col-3
-    <ngx-spinner
-      bdColor="rgba(51,51,51,0.8)"
-      size="medium"
-      color="#fff"
-      type="ball-scale-multiple"
-      [fullScreen]="true"
-    >
-      <p style="font-size: 20px; color: white">Loading...</p>
-    </ngx-spinner>
+  <div class="col-md-3">
+    <h2 routerLink="user">go to user</h2>
+  </div>
+  <div class="col-md-3">
+    <h2 [routerLink]="['user', 5]">go to user 5 detail</h2>
   </div>
 </div>
 
-<router-outlet></router-outlet>
+<router-outlet> </router-outlet>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
