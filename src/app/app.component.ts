@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-root",
@@ -8,10 +9,14 @@ import { ToastrService } from "ngx-toastr";
 })
 export class AppComponent implements OnInit {
   title = "udemy-angular-course";
-  constructor(private toastr: ToastrService) {}
+  constructor(
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
     this.showSuccess();
+    this.showSpinner();
   }
 
   showSuccess() {
@@ -19,5 +24,14 @@ export class AppComponent implements OnInit {
       "Udemy Angular 9 projemize hoşgeldiniz...!",
       "Giriş Başarılı!"
     );
+  }
+
+  showSpinner() {
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 1000);
   }
 }
