@@ -2,13 +2,11 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { RoleComponent } from "./role/role.component";
-import { UserComponent } from "./user/user.component";
-import { UserDetailComponent } from "./user/user-detail/user-detail.component";
 
 const routes: Routes = [
   {
     path: "home",
-    component: HomeComponent
+    loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
   },
   {
     path: "role",
@@ -16,11 +14,7 @@ const routes: Routes = [
   },
   {
     path: "user",
-    component: UserComponent
-  },
-  {
-    path: "user/:id",
-    component: UserDetailComponent
+    loadChildren: () => import("./user/user.module").then(m => m.UserModule)
   },
   {
     path: "**",
