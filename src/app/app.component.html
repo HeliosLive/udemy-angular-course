@@ -1,21 +1,32 @@
+<app-navbar></app-navbar>
+
 <div class="row">
   <div class="col-md-3">
-    <h2 routerLink="home">go to Home</h2>
+    <app-sidebar></app-sidebar>
+    <!-- <ul>
+      <li routerLink="home">
+        Home
+      </li>
+      <li routerLink="role">
+        Role
+      </li>
+      <li routerLink="user">
+        User
+      </li>
+      <ul>
+        <li [routerLink]="['user', 5]">
+          User 5 Detail
+        </li>
+        <li [routerLink]="['user', 5, 'role']">
+          User 5 Role
+        </li>
+      </ul>
+    </ul> -->
   </div>
-  <div class="col-md-3">
-    <h2 routerLink="role">go to Role</h2>
-  </div>
-  <div class="col-md-3">
-    <h2 routerLink="user">go to user</h2>
-  </div>
-  <div class="col-md-3">
-    <h2 [routerLink]="['user', 5]">go to user 5 detail</h2>
+  <div class="col-md-9">
+    <router-outlet> </router-outlet>
   </div>
 </div>
-
-<button igxButton="flat">Welcome To App Component</button>
-
-<router-outlet> </router-outlet>
 
 <ngx-spinner
   bdColor="rgba(51,51,51,0.8)"
