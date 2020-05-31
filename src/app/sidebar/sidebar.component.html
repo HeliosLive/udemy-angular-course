@@ -1,0 +1,18 @@
+<!-- app.component.html -->
+<div class="content-wrap">
+  <igx-nav-drawer id="navigation" #drawer [isOpen]="true">
+    <ng-template igxDrawer>
+      <nav>
+        <span igxDrawerItem [isHeader]="true"> Sidebar Listesi </span>
+        <span igxDrawerItem igxRipple [active]="true" routerLink="home">
+          Home
+        </span>
+        <span igxDrawerItem igxRipple routerLink="role"> Role </span>
+        <span igxDrawerItem igxRipple routerLink="user"> User </span>
+      </nav>
+    </ng-template>
+  </igx-nav-drawer>
+  <main>
+    <!-- app content -->
+  </main>
+</div>
