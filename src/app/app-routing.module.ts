@@ -29,6 +29,11 @@ const routes: Routes = [
       import("./storage/storage.module").then(m => m.StorageModule)
   },
   {
+    path: "directives",
+    loadChildren: () =>
+      import("./directives/directives.module").then(m => m.DirectivesModule)
+  },
+  {
     path: "**",
     component: HomeComponent
   }
