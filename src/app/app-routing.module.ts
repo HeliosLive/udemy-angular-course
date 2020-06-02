@@ -34,6 +34,10 @@ const routes: Routes = [
       import("./directives/directives.module").then(m => m.DirectivesModule)
   },
   {
+    path: "pipes",
+    loadChildren: () => import("./pipes/pipes.module").then(m => m.PipesModule)
+  },
+  {
     path: "**",
     component: HomeComponent
   }
