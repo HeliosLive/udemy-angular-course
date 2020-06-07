@@ -27,6 +27,7 @@ import {
   IgxIconModule,
   IgxNavigationDrawerModule
 } from "igniteui-angular";
+import { UserService } from "src/libs";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import {
     IgxIconModule,
     IgxNavigationDrawerModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, UserService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

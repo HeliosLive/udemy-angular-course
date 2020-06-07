@@ -6,6 +6,7 @@ import { UserDetailsComponent } from "./user/user-details/user-details.component
 import { UserRoleComponent } from "./user/user-role/user-role.component";
 import { Routes, RouterModule } from "@angular/router";
 import { IgxButtonModule } from "igniteui-angular";
+import { AuthChildGuard } from "src/libs/guards/auth-child.guard";
 
 const routes: Routes = [
   {
@@ -23,13 +24,14 @@ const routes: Routes = [
       {
         path: "role",
         component: UserRoleComponent
-      },
-      {
-        path: "",
-        redirectTo: "details",
-        pathMatch: "full"
       }
-    ]
+      // {
+      //   path: "",
+      //   redirectTo: "details",
+      //   pathMatch: "full"
+      // }
+    ],
+    canActivateChild: [AuthChildGuard]
   }
 ];
 

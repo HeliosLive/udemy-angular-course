@@ -11,3 +11,7 @@ export * from "./custom-validators/no-white-space.validator";
 export * from "./custom-validators/user-name-exist.validator";
 
 export * from "./services/user.service";
+
+export * from "./guards/auth.guard";
+export * from "./guards/auth-child.guard";
+export * from "./guards/auth-exit.guard";

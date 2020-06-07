@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { RoleComponent } from "./role/role.component";
+import { AuthGuard, AuthExitGuard } from "src/libs";
 
 const routes: Routes = [
   {
@@ -26,12 +27,14 @@ const routes: Routes = [
   {
     path: "storage",
     loadChildren: () =>
-      import("./storage/storage.module").then(m => m.StorageModule)
+      import("./storage/storage.module").then(m => m.StorageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: "directives",
     loadChildren: () =>
-      import("./directives/directives.module").then(m => m.DirectivesModule)
+      import("./directives/directives.module").then(m => m.DirectivesModule),
+    canDeactivate: [AuthExitGuard]
   },
   {
     path: "pipes",
@@ -54,7 +57,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
