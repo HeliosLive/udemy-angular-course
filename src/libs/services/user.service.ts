@@ -6,7 +6,7 @@ import { of } from "rxjs";
 })
 export class UserService {
   users = ["ahmet", "kerem"];
-
+  isLoggedIn = false;
   constructor() {}
 
   isExistName(val: string) {
@@ -15,5 +15,9 @@ export class UserService {
     } else {
       return of(false);
     }
+  }
+
+  login() {
+    this.isLoggedIn = !this.isLoggedIn;
   }
 }
