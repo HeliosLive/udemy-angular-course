@@ -43,6 +43,11 @@ const routes: Routes = [
       import("./parents/parents.module").then(m => m.ParentsModule)
   },
   {
+    path: "forms",
+    loadChildren: () =>
+      import("./forms/forms.module").then(m => m.AngularFormsModule)
+  },
+  {
     path: "**",
     component: HomeComponent
   }
