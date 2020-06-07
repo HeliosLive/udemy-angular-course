@@ -9,9 +9,13 @@ import { MapService } from "src/libs";
 export class RegionComponent implements OnInit {
   regionData;
 
-  constructor(private mapService: MapService) {}
+  constructor(private mapService: MapService) {
+    mapService.cityRegionSubject.subscribe(data => {
+      this.regionData = data;
+    });
+  }
 
   ngOnInit() {
-    this.regionData = this.mapService.getCityRegions();
+    this.mapService.getCityRegions();
   }
 }

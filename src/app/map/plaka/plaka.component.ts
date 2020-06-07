@@ -9,9 +9,13 @@ import { MapService } from "src/libs";
 export class PlakaComponent implements OnInit {
   plakaData;
 
-  constructor(private mapService: MapService) {}
+  constructor(private mapService: MapService) {
+    mapService.cityPlakaSubject.subscribe(data => {
+      this.plakaData = data;
+    });
+  }
 
   ngOnInit() {
-    this.plakaData = this.mapService.getCityPlakas();
+    this.mapService.getCityPlakas();
   }
 }
