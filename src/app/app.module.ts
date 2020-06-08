@@ -20,6 +20,8 @@ import { registerLocaleData } from "@angular/common";
 import localeTr from "@angular/common/locales/tr";
 import localeTrExtra from "@angular/common/locales/extra/tr";
 
+import { HttpClientModule } from "@angular/common/http";
+
 registerLocaleData(localeTr, "tr-TR", localeTrExtra);
 
 import {
@@ -30,17 +32,13 @@ import {
 import { UserService } from "src/libs";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RoleComponent,
-    NavbarComponent,
-    SidebarComponent
-  ],
+  declarations: [AppComponent, NavbarComponent, SidebarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       progressBar: true,
