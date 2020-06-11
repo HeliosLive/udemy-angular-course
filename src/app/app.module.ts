@@ -20,7 +20,7 @@ import { registerLocaleData } from "@angular/common";
 import localeTr from "@angular/common/locales/tr";
 import localeTrExtra from "@angular/common/locales/extra/tr";
 
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 registerLocaleData(localeTr, "tr-TR", localeTrExtra);
 
@@ -29,7 +29,7 @@ import {
   IgxIconModule,
   IgxNavigationDrawerModule
 } from "igniteui-angular";
-import { UserService } from "src/libs";
+import { UserService, AuthInterceptor } from "src/libs";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, SidebarComponent],
@@ -53,7 +53,15 @@ import { UserService } from "src/libs";
     IgxIconModule,
     IgxNavigationDrawerModule
   ],
-  providers: [CookieService, UserService],
+  providers: [
+    CookieService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
