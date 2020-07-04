@@ -24,10 +24,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 registerLocaleData(localeTr, "tr-TR", localeTrExtra);
 
+import { HttpClient } from "@angular/common/http";
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+
 import {
   IgxNavbarModule,
   IgxIconModule,
-  IgxNavigationDrawerModule
+  IgxNavigationDrawerModule,
+  IgxSelectModule
 } from "igniteui-angular";
 import { UserService, AuthInterceptor } from "src/libs";
 
@@ -48,10 +53,18 @@ import { UserService, AuthInterceptor } from "src/libs";
       preventDuplicates: true,
       positionClass: "toast-bottom-left"
     }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     NgxSpinnerModule,
     IgxNavbarModule,
     IgxIconModule,
-    IgxNavigationDrawerModule
+    IgxNavigationDrawerModule,
+    IgxSelectModule
   ],
   providers: [
     CookieService,
@@ -66,3 +79,11 @@ import { UserService, AuthInterceptor } from "src/libs";
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(
+    http,
+    "/assets/i18n/",
+    ".json?cb=" + new Date().getTime()
+  );
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { UserService } from "src/libs";
 
 @Component({
@@ -7,6 +7,9 @@ import { UserService } from "src/libs";
   styleUrls: ["./navbar.component.scss"]
 })
 export class NavbarComponent implements OnInit {
+  @Input() lang: any;
+  @Output() langChange: EventEmitter<any> = new EventEmitter();
+
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {}

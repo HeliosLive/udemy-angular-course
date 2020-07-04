@@ -1,27 +1,8 @@
-<app-navbar></app-navbar>
+<app-navbar [lang]="translateService.currentLang" (langChange)="setLanguage($event);"></app-navbar>
 
 <div class="row">
   <div class="col-md-3">
     <app-sidebar></app-sidebar>
-    <!-- <ul>
-      <li routerLink="home">
-        Home
-      </li>
-      <li routerLink="role">
-        Role
-      </li>
-      <li routerLink="user">
-        User
-      </li>
-      <ul>
-        <li [routerLink]="['user', 5]">
-          User 5 Detail
-        </li>
-        <li [routerLink]="['user', 5, 'role']">
-          User 5 Role
-        </li>
-      </ul>
-    </ul> -->
   </div>
   <div class="col-md-9">
     <router-outlet> </router-outlet>
