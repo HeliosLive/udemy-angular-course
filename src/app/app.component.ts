@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-root",
@@ -11,8 +12,12 @@ export class AppComponent implements OnInit {
   title = "udemy-angular-course";
   constructor(
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
-  ) {}
+    private spinner: NgxSpinnerService,
+    public translateService: TranslateService
+  ) {
+    translateService.setDefaultLang("en");
+    translateService.use("en");
+  }
 
   ngOnInit() {
     this.showSuccess();
@@ -20,10 +25,11 @@ export class AppComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success(
-      "Udemy Angular 9 projemize hoşgeldiniz...!",
-      "Giriş Başarılı!"
-    );
+    this.translateService.onLangChange.subscribe(resp => {
+      const title = this.translateService.instant("toastr.title");
+      const message = this.translateService.instant("toastr.message");
+      this.toastr.success(title, message);
+    });
   }
 
   showSpinner() {
@@ -33,5 +39,9 @@ export class AppComponent implements OnInit {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
     }, 1000);
+  }
+
+  setLanguage(lang: string) {
+    this.translateService.use(lang);
   }
 }
