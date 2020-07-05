@@ -1,0 +1,12 @@
+{
+  "fileServerFolder": ".",
+  "fixturesFolder": "./cypress/fixtures",
+  "integrationFolder": "./cypress/integration",
+  "pluginsFile": "./cypress/plugins/index",
+  "supportFile": false,
+  "video": true,
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 10000,
+  "viewportWidth": 1400,
+  "viewportHeight": 960
+}
