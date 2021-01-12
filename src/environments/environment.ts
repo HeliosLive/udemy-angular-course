@@ -6,12 +6,15 @@ export const environment = {
   production: false,
   api: {
     nestjs: {
-      role: "https://udemy-nestjs-course.herokuapp.com/api"
+      role: "https://udemy-nestjs-course.herokuapp.com/api",
     },
     fleek: {
-      host: "https://fleek-api.herokuapp.com/api"
-    }
-  }
+      host: "https://fleek-api.herokuapp.com/api",
+    },
+    air: {
+      host: "https://enter-air-quality-monitor.herokuapp.com/api",
+    },
+  },
 };
 
 /*

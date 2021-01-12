@@ -4,7 +4,7 @@ import { UserService } from "src/libs";
 @Component({
   selector: "app-user-list",
   templateUrl: "./user-list.component.html",
-  styleUrls: ["./user-list.component.scss"]
+  styleUrls: ["./user-list.component.scss"],
 })
 export class UserListComponent implements OnInit {
   userData;
@@ -13,46 +13,58 @@ export class UserListComponent implements OnInit {
   randomUsers = [
     {
       id: 1,
-      name: "kullanıcı 1"
+      name: "kullanıcı 1",
     },
     {
       id: 2,
-      name: "kullanıcı 2"
+      name: "kullanıcı 2",
     },
     {
       id: 3,
-      name: "kullanıcı 3"
+      name: "kullanıcı 3",
     },
     {
       id: 4,
-      name: "kullanıcı 4"
+      name: "kullanıcı 4",
     },
     {
       id: 5,
-      name: "kullanıcı 5"
+      name: "kullanıcı 5",
     },
     {
       id: 6,
-      name: "kullanıcı 6"
+      name: "kullanıcı 6",
     },
     {
       id: 7,
-      name: "kullanıcı 7"
-    }
+      name: "kullanıcı 7",
+    },
   ];
   constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.getAllUsers();
+    this.getTestHeroku();
   }
 
   getAllUsers() {
     this.userService.getAllUsers().subscribe(
-      data => {
+      (data) => {
         this.userData = data;
       },
-      error => {
+      (error) => {
         alert(`${error.error.exception.message}`);
+        console.log("error", error);
+      }
+    );
+  }
+
+  getTestHeroku() {
+    this.userService.testHeroku().subscribe(
+      (data) => {
+        console.log("asdasda", data);
+      },
+      (error) => {
         console.log("error", error);
       }
     );
